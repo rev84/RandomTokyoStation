@@ -7,6 +7,8 @@ $().ready ->
 
 
 init = ->
+  new Audio('/sound/button55.wav')
+  new Audio('/sound/decision24.wav')
   refresh()
   $('#start').on 'click', start
   $('#width, #height').on 'change', refresh
@@ -51,7 +53,7 @@ start = ->
 stop = ->
   unless window.timer is false
     if $('#se').prop('checked')
-      audio = new Audio('./sound/decision24.wav')
+      audio = new Audio('/sound/decision24.wav')
       audio.volume = 0.5
       audio.play()
     clearInterval window.timer
@@ -69,7 +71,7 @@ randomPick = ->
     $('<span>').html(one.name)
   )
   if $('#se').prop('checked')
-    audio = new Audio('./sound/button55.wav')
+    audio = new Audio('/sound/button55.wav')
     audio.volume = 0.5
     audio.play()
 
