@@ -54,3 +54,9 @@
   height:100px;
   font-size:40px;
 }
+#tweet {
+  background:url('../img/tweet.png') no-repeat left center;
+  background-size: contain;
+  width:100px;
+  height:28px;
+}

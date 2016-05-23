@@ -7,6 +7,9 @@ $().ready ->
 
 
 init = ->
+  # ツイートボタン
+  $('#tweet').on 'click', ->
+    tweetButton()
   new Audio('./sound/button55.wav')
   new Audio('./sound/decision24.wav')
   refresh()
@@ -97,3 +100,10 @@ switchSideBar = ->
   else
     $('#side_bar').css('display', 'none')
     $('#side_bar_button span').removeClass('glyphicon-remove-circle').addClass('glyphicon-fullscreen')
+
+tweetButton = ()->
+  url   = location.href
+  title = document.title
+  target = 'https://twitter.com/share?text='+encodeURIComponent(title)+'&url='+encodeURIComponent(url)
+  window.open(target, 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1')
+  false
