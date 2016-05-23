@@ -12,7 +12,9 @@ init = ->
   refresh()
   $('#start').on 'click', start
   $('#width, #height').on 'change', refresh
-
+  # サイドバー出し入れボタン
+  $('#side_bar_button').on 'click', ->
+    switchSideBar()
 
 refresh = ->
   w = Number $('#width').val()
@@ -45,7 +47,8 @@ refresh = ->
   $('#field').append table
 
 start = ->
-  window.timer = setInterval(randomPick, 100)
+  ms = Number $('#ms').val()
+  window.timer = setInterval(randomPick, ms)
   $('#start').html('ストップ')
   $('#start').off 'click'
   $('#start').on 'click', stop
@@ -86,3 +89,11 @@ getOne = (index)->
           y:y
         }
       total += window.stations[x][y].length
+
+switchSideBar = ->
+  if $('#side_bar').css('display') is 'none'
+    $('#side_bar').css('display', 'inline')
+    $('#side_bar_button span').removeClass('glyphicon-fullscreen').addClass('glyphicon-remove-circle')
+  else
+    $('#side_bar').css('display', 'none')
+    $('#side_bar_button span').removeClass('glyphicon-remove-circle').addClass('glyphicon-fullscreen')
