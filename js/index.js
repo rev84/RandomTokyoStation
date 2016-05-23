@@ -10,8 +10,8 @@ $().ready(function() {
 });
 
 init = function() {
-  new Audio('/sound/button55.wav');
-  new Audio('/sound/decision24.wav');
+  new Audio('./sound/button55.wav');
+  new Audio('./sound/decision24.wav');
   refresh();
   $('#start').on('click', start);
   return $('#width, #height').on('change', refresh);
@@ -60,7 +60,7 @@ stop = function() {
   var audio;
   if (window.timer !== false) {
     if ($('#se').prop('checked')) {
-      audio = new Audio('/sound/decision24.wav');
+      audio = new Audio('./sound/decision24.wav');
       audio.volume = 0.5;
       audio.play();
     }
@@ -79,7 +79,7 @@ randomPick = function() {
   one = getOne(index);
   $('#x' + one.x + 'y' + one.y).addClass('picked').append($('<span>').html(one.name));
   if ($('#se').prop('checked')) {
-    audio = new Audio('/sound/button55.wav');
+    audio = new Audio('./sound/button55.wav');
     audio.volume = 0.5;
     return audio.play();
   }

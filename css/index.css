@@ -19,7 +19,7 @@
 #field {
   width:600px;
   height:500px;
-  background-image:url('/img/map.png');
+  background-image:url('../img/map.png');
 }
 #field td {
   border:1px solid #000000;
