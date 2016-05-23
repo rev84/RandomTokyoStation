@@ -15,9 +15,9 @@ init = ->
   refresh()
   $('#start').on 'click', start
   $('#width, #height').on 'change', refresh
+  $('#show_num').on 'click', showNum
   # サイドバー出し入れボタン
-  $('#side_bar_button').on 'click', ->
-    switchSideBar()
+  $('#side_bar_button').on 'click', switchSideBar
 
 refresh = ->
   w = Number $('#width').val()
@@ -41,13 +41,19 @@ refresh = ->
     tr = $('<tr>')
     for x in [0...w]
       tr.append(
-        $('<td>').css({
+        $('<td>').addClass('normal').css({
           width  : ''+(100/w)+'%'
           height : ''+(100/h)+'%'
         }).attr('id', 'x'+x+'y'+y)
       )
     table.append tr
   $('#field').append table
+
+showNum = ->
+  $('#field td').html('').removeClass('picked')
+  for x in [0...stations.length]
+    for y in [0...stations[x].length]
+      $('#x'+x+'y'+y).html(stations[x][y].length)
 
 start = ->
   ms = Number $('#ms').val()
@@ -74,7 +80,10 @@ randomPick = ->
 
   one = getOne index
   $('#x'+one.x+'y'+one.y).addClass('picked').append(
-    $('<span>').html(one.name)
+    $('<a>').attr({
+      href: 'https://www.google.co.jp/search?q='+one.name+'駅'
+      target:'_blank'
+    }).html(one.name)
   )
   if $('#se').prop('checked')
     audio = new Audio('./sound/button55.wav')
