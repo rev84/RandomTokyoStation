@@ -20,31 +20,31 @@ init = ->
   $('#side_bar_button').on 'click', switchSideBar
 
 refresh = ->
-  w = Number $('#width').val()
-  h = Number $('#height').val()
+  x = Number $('#width').val()
+  y = Number $('#height').val()
 
   window.stations = []
-  for wIndex in [0...w]
-    window.stations[wIndex] = []
-    for hIndex in [0...h]
-      window.stations[wIndex][hIndex] = []
+  for xIndex in [0...x]
+    window.stations[xIndex] = []
+    for yIndex in [0...y]
+      window.stations[xIndex][yIndex] = []
 
   for s in STATIONS
-    wIndex = if Math.floor((s.w)*w) is w then w-1 else Math.floor((s.w)*w)
-    hIndex = if Math.floor((s.h)*h) is h then h-1 else Math.floor((s.h)*h)
-    window.stations[wIndex][hIndex].push s.name
+    xIndex = if Math.floor((s.x)*x) is x then x-1 else Math.floor((s.x)*x)
+    yIndex = if Math.floor((s.y)*y) is y then y-1 else Math.floor((s.y)*y)
+    window.stations[xIndex][yIndex].push s.name
 
 
   $('#field').html('')
   table = $('<table>').addClass('board')
-  for y in [0...h]
+  for yIndex in [0...y]
     tr = $('<tr>')
-    for x in [0...w]
+    for xIndex in [0...x]
       tr.append(
         $('<td>').addClass('normal').css({
-          width  : ''+(100/w)+'%'
-          height : ''+(100/h)+'%'
-        }).attr('id', 'x'+x+'y'+y)
+          width  : ''+(100/x)+'%'
+          height : ''+(100/y)+'%'
+        }).attr('id', 'x'+xIndex+'y'+yIndex)
       )
     table.append tr
   $('#field').append table

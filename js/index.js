@@ -23,31 +23,31 @@ init = function() {
 };
 
 refresh = function() {
-  var h, hIndex, j, l, len, o, q, r, ref, ref1, ref2, ref3, s, table, tr, w, wIndex, x, y;
-  w = Number($('#width').val());
-  h = Number($('#height').val());
+  var j, l, len, o, q, r, ref, ref1, ref2, ref3, s, table, tr, x, xIndex, y, yIndex;
+  x = Number($('#width').val());
+  y = Number($('#height').val());
   window.stations = [];
-  for (wIndex = j = 0, ref = w; 0 <= ref ? j < ref : j > ref; wIndex = 0 <= ref ? ++j : --j) {
-    window.stations[wIndex] = [];
-    for (hIndex = l = 0, ref1 = h; 0 <= ref1 ? l < ref1 : l > ref1; hIndex = 0 <= ref1 ? ++l : --l) {
-      window.stations[wIndex][hIndex] = [];
+  for (xIndex = j = 0, ref = x; 0 <= ref ? j < ref : j > ref; xIndex = 0 <= ref ? ++j : --j) {
+    window.stations[xIndex] = [];
+    for (yIndex = l = 0, ref1 = y; 0 <= ref1 ? l < ref1 : l > ref1; yIndex = 0 <= ref1 ? ++l : --l) {
+      window.stations[xIndex][yIndex] = [];
     }
   }
   for (o = 0, len = STATIONS.length; o < len; o++) {
     s = STATIONS[o];
-    wIndex = Math.floor(s.w * w) === w ? w - 1 : Math.floor(s.w * w);
-    hIndex = Math.floor(s.h * h) === h ? h - 1 : Math.floor(s.h * h);
-    window.stations[wIndex][hIndex].push(s.name);
+    xIndex = Math.floor(s.x * x) === x ? x - 1 : Math.floor(s.x * x);
+    yIndex = Math.floor(s.y * y) === y ? y - 1 : Math.floor(s.y * y);
+    window.stations[xIndex][yIndex].push(s.name);
   }
   $('#field').html('');
   table = $('<table>').addClass('board');
-  for (y = q = 0, ref2 = h; 0 <= ref2 ? q < ref2 : q > ref2; y = 0 <= ref2 ? ++q : --q) {
+  for (yIndex = q = 0, ref2 = y; 0 <= ref2 ? q < ref2 : q > ref2; yIndex = 0 <= ref2 ? ++q : --q) {
     tr = $('<tr>');
-    for (x = r = 0, ref3 = w; 0 <= ref3 ? r < ref3 : r > ref3; x = 0 <= ref3 ? ++r : --r) {
+    for (xIndex = r = 0, ref3 = x; 0 <= ref3 ? r < ref3 : r > ref3; xIndex = 0 <= ref3 ? ++r : --r) {
       tr.append($('<td>').addClass('normal').css({
-        width: '' + (100 / w) + '%',
-        height: '' + (100 / h) + '%'
-      }).attr('id', 'x' + x + 'y' + y));
+        width: '' + (100 / x) + '%',
+        height: '' + (100 / y) + '%'
+      }).attr('id', 'x' + xIndex + 'y' + yIndex));
     }
     table.append(tr);
   }

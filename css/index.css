@@ -28,8 +28,10 @@
 }
 #field {
   width:600px;
-  height:500px;
+  height:600px;
   background-image:url('../img/map.png');
+  background-size:cover;
+  background-repeat:no-repeat;
 }
 #field td {
   border:1px solid #000000;
